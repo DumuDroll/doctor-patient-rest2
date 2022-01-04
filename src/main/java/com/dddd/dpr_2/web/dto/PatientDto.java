@@ -20,6 +20,8 @@ public class PatientDto {
 
 	private int order;
 
+	private FullInfoDto fullInfo;
+
 	@ToString.Exclude
 	private DoctorDto doctor;
 

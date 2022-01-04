@@ -21,12 +21,11 @@ import java.util.UUID;
 public class Doctor {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
 	private UUID uuid;
 
-	private int order;
+	private int itemOrder;
 
 	@OneToMany(mappedBy = "doctor")
 	private List<Patient> patients;

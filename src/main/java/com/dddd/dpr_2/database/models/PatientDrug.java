@@ -19,7 +19,7 @@ public class PatientDrug {
 
 	private UUID uuid;
 
-	private int order;
+	private int itemOrder;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@MapsId("patientId")
