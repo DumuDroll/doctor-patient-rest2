@@ -3,9 +3,12 @@ package com.dddd.dpr_2.general.services;
 import com.dddd.dpr_2.database.models.FullInfo;
 import com.dddd.dpr_2.database.models.Patient;
 import com.dddd.dpr_2.database.repository.PatientRepository;
+import com.dddd.dpr_2.general.config.ChainStrategyConfig;
 import com.dddd.dpr_2.general.constants.Constants;
 import com.dddd.dpr_2.general.exceptions.ResourceAlreadyExistsException;
 import com.dddd.dpr_2.general.exceptions.ResourceNotFoundException;
+import com.dddd.dpr_2.general.order_strategies.OrderContext;
+import com.dddd.dpr_2.general.order_strategies.OrderContextBuilder;
 import com.dddd.dpr_2.web.dto.PatientDto;
 import com.dddd.dpr_2.web.mappers.PatientMapper;
 import lombok.extern.log4j.Log4j2;
@@ -17,16 +20,20 @@ import java.util.Optional;
 @Log4j2
 @Service
 @Transactional
-public class PatientServiceImpl {
+public class PatientService {
 
 	private final PatientRepository patientRepository;
 
-
 	private final PatientMapper patientMapper;
 
-	public PatientServiceImpl(PatientRepository patientRepository, PatientMapper patientMapper) {
+	private final ChainStrategyConfig<Patient, PatientRepository> chainStrategyConfig;
+
+	public PatientService(PatientRepository patientRepository,
+						  PatientMapper patientMapper,
+						  ChainStrategyConfig<Patient, PatientRepository> chainStrategyConfig) {
 		this.patientRepository = patientRepository;
 		this.patientMapper = patientMapper;
+		this.chainStrategyConfig = chainStrategyConfig;
 	}
 
 	public void create(PatientDto patientDto) {
@@ -39,6 +46,13 @@ public class PatientServiceImpl {
 		}
 		FullInfo fullInfo = patient.getFullInfo();
 		fullInfo.setPatient(patient);
+		OrderContext<Patient, PatientRepository> orderContext = new OrderContextBuilder<Patient, PatientRepository>()
+				.setObject(patient)
+				.setRepository(patientRepository)
+				.setOrderStrategy(chainStrategyConfig.chainOrderStrategy())
+				.build();
+		orderContext.executeStrategy();
+
 		patientMapper.patientToPatientDto(patientRepository.save(patient));
 	}
 

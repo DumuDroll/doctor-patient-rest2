@@ -1,6 +1,6 @@
 package com.dddd.dpr_2.web.controllers;
 
-import com.dddd.dpr_2.general.services.DrugServiceImpl;
+import com.dddd.dpr_2.general.services.DrugService;
 import com.dddd.dpr_2.web.dto.DrugDto;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -9,11 +9,11 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
 @Component
-public class DrugController {
+public class DrugRabbitListener {
 
-	private final DrugServiceImpl drugService;
+	private final DrugService drugService;
 
-	public DrugController(DrugServiceImpl drugService) {
+	public DrugRabbitListener(DrugService drugService) {
 		this.drugService = drugService;
 	}
 	@RabbitListener(queues = "savedDrug")

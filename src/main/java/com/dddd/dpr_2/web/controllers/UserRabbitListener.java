@@ -1,6 +1,6 @@
 package com.dddd.dpr_2.web.controllers;
 
-import com.dddd.dpr_2.general.services.UserServiceImpl;
+import com.dddd.dpr_2.general.services.UserService;
 import com.dddd.dpr_2.web.dto.UserDto;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -9,11 +9,11 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UserController {
+public class UserRabbitListener {
 
-	private final UserServiceImpl userService;
+	private final UserService userService;
 
-	public UserController(UserServiceImpl userService) {
+	public UserRabbitListener(UserService userService) {
 		this.userService = userService;
 	}
 

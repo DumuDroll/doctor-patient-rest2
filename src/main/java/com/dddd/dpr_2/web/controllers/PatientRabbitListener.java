@@ -1,10 +1,9 @@
 package com.dddd.dpr_2.web.controllers;
 
-import com.dddd.dpr_2.general.services.PatientServiceImpl;
+import com.dddd.dpr_2.general.services.PatientService;
 import com.dddd.dpr_2.web.dto.PatientDto;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.extern.java.Log;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -12,11 +11,11 @@ import org.springframework.stereotype.Component;
 
 @Log4j2
 @Component
-public class PatientController {
+public class PatientRabbitListener {
 
-	private final PatientServiceImpl patientService;
+	private final PatientService patientService;
 
-	public PatientController(PatientServiceImpl patientService) {
+	public PatientRabbitListener(PatientService patientService) {
 		this.patientService = patientService;
 	}
 

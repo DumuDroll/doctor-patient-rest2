@@ -9,7 +9,6 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @Entity
 @EntityListeners({DrugLoggerListener.class})
@@ -18,14 +17,7 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Drug {
-
-	@Id
-	private long id;
-
-	private UUID uuid;
-
-	private int itemOrder;
+public class Drug extends OrderedModel{
 
 	@OneToMany(
 			mappedBy = "drug",

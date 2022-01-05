@@ -16,15 +16,15 @@ import java.util.Optional;
 @Log4j2
 @Service
 @Transactional
-public class UserServiceImpl {
+public class UserService {
 
 	private final UserMapper userMapper;
 
 	private final UserRepository userRepository;
 
 	@Autowired
-	public UserServiceImpl(UserMapper userMapper,
-						   UserRepository userRepository) {
+	public UserService(UserMapper userMapper,
+					   UserRepository userRepository) {
 		this.userMapper = userMapper;
 		this.userRepository = userRepository;
 	}

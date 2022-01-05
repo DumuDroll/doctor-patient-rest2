@@ -7,8 +7,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
-import java.util.UUID;
+import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
 @EntityListeners(FullInfoLoggerListener.class)
@@ -17,14 +19,7 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class FullInfo {
-
-	@Id
-	private long id;
-
-	private UUID uuid;
-
-	private int itemOrder;
+public class FullInfo extends OrderedModel {
 
 	@OneToOne(mappedBy = "fullInfo")
 	private Patient patient;

@@ -1,6 +1,6 @@
 package com.dddd.dpr_2.web.controllers;
 
-import com.dddd.dpr_2.general.services.DoctorServiceImpl;
+import com.dddd.dpr_2.general.services.DoctorService;
 import com.dddd.dpr_2.web.dto.DoctorDto;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -9,11 +9,11 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
 @Component
-public class DoctorController {
+public class DoctorRabbitListener {
 
-	private final DoctorServiceImpl doctorService;
+	private final DoctorService doctorService;
 
-	public DoctorController(DoctorServiceImpl doctorService) {
+	public DoctorRabbitListener(DoctorService doctorService) {
 		this.doctorService = doctorService;
 	}
 

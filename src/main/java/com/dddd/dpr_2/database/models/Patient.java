@@ -9,7 +9,6 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @Entity
 @EntityListeners(PatientLoggerListener.class)
@@ -18,14 +17,8 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Patient {
+public class Patient extends OrderedModel{
 
-	@Id
-	private long id;
-
-	private UUID uuid;
-
-	private int itemOrder;
 
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private FullInfo fullInfo;

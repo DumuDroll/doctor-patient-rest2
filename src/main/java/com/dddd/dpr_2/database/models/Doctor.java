@@ -7,9 +7,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.util.List;
-import java.util.UUID;
 
 @Entity
 @EntityListeners({DoctorLoggerListener.class, DoctorPreRemoveListener.class})
@@ -18,14 +20,7 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Doctor {
-
-	@Id
-	private long id;
-
-	private UUID uuid;
-
-	private int itemOrder;
+public class Doctor extends OrderedModel {
 
 	@OneToMany(mappedBy = "doctor")
 	private List<Patient> patients;
