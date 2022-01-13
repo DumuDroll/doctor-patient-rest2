@@ -14,4 +14,8 @@ import javax.persistence.Table;
 @NoArgsConstructor
 public class User extends OrderedModel{
 
+	private String iconName;
+
+	private byte[] icon;
+
 }

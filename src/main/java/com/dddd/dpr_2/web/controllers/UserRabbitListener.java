@@ -27,4 +27,13 @@ public class UserRabbitListener {
 		userService.deleteById(Long.parseLong(id));
 	}
 
+	@RabbitListener(queues = "saveIcon")
+	public void listenToSaveIcon(Message message) throws JsonProcessingException {
+		userService.saveIcon(new ObjectMapper().readValue(new String(message.getBody()), UserDto.class));
+	}
+
+	@RabbitListener(queues = "requestForIcon")
+	public Message listenToRequestForIcon(String id) {
+		return userService.returnIcon(Long.parseLong(id));
+	}
 }

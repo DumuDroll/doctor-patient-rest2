@@ -1,5 +1,6 @@
 package com.dddd.dpr_2.web.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,6 +18,11 @@ public class UserDto {
 
 	private UUID uuid;
 
+	@JsonIgnore
 	private int order;
+
+	private String iconName;
+
+	private byte[] icon;
 
 }

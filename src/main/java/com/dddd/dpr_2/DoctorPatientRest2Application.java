@@ -48,6 +48,14 @@ public class DoctorPatientRest2Application {
 		return new Queue("deletedUser", false);
 	}
 
+	@Bean
+	public Queue saveUserIcon() {
+		return new Queue("saveIcon", false);
+	}
+	@Bean
+	public Queue requestForIcon() {
+		return new Queue("requestForIcon", false);
+	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(DoctorPatientRest2Application.class, args);
