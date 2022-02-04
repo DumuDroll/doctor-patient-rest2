@@ -57,6 +57,11 @@ public class DoctorPatientRest2Application {
 		return new Queue("requestForIcon", false);
 	}
 
+	@Bean
+	public Queue saveDiagnosis() {
+		return new Queue("saveDiagnosis", false);
+	}
+
 	public static void main(String[] args) {
 		SpringApplication.run(DoctorPatientRest2Application.class, args);
 	}

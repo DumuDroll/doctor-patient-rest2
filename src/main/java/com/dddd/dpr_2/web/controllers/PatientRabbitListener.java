@@ -2,6 +2,7 @@ package com.dddd.dpr_2.web.controllers;
 
 import com.dddd.dpr_2.general.services.PatientService;
 import com.dddd.dpr_2.web.dto.PatientDto;
+import com.dddd.dpr_2.web.dto.UserDto;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.log4j.Log4j2;
@@ -31,6 +32,19 @@ public class PatientRabbitListener {
 		} catch (Exception e){
 			log.error(e.getMessage());
 		}
+	}
+
+	@RabbitListener(queues = "saveDiagnosis")
+	public void listenToDiagnosisSave(Message message) throws JsonProcessingException {
+		patientService.saveDiagnosisAndReturnPath(new ObjectMapper()
+				.readValue(new String(message.getBody()), PatientDto.class));
+	}
+
+
+	@RabbitListener(queues = "saveIcon")
+	public void listenToSaveIcon(Message message) throws JsonProcessingException {
+		patientService.saveDiagnosisAndReturnPath(new ObjectMapper()
+				.readValue(new String(message.getBody()), PatientDto.class));
 	}
 
 	@RabbitListener(queues = "deletedPatient")

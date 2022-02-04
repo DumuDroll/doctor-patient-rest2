@@ -20,6 +20,8 @@ public class PatientDto {
 
 	private int order;
 
+	private byte[] diagnosis;
+
 	private FullInfoDto fullInfo;
 
 	@ToString.Exclude
