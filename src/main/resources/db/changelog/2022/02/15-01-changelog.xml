@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.7.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1644939523428-7" author="DDDD (generated)">
+        <createIndex indexName="IX_pk_patient_drug" tableName="patient_drug" unique="true">
+            <column name="patient_id"/>
+            <column name="drug_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet id="1644939523428-1" author="DDDD (generated)">
+        <dropNotNullConstraint columnDataType="int" columnName="item_order" tableName="doctors"/>
+    </changeSet>
+    <changeSet id="1644939523428-2" author="DDDD (generated)">
+        <dropNotNullConstraint columnDataType="int" columnName="item_order" tableName="drugs"/>
+    </changeSet>
+    <changeSet id="1644939523428-3" author="DDDD (generated)">
+        <dropNotNullConstraint columnDataType="int" columnName="item_order" tableName="full_info"/>
+    </changeSet>
+    <changeSet id="1644939523428-4" author="DDDD (generated)">
+        <dropNotNullConstraint columnDataType="int" columnName="item_order" tableName="patient_drug"/>
+    </changeSet>
+    <changeSet id="1644939523428-5" author="DDDD (generated)">
+        <dropNotNullConstraint columnDataType="int" columnName="item_order" tableName="patients"/>
+    </changeSet>
+    <changeSet id="1644939523428-6" author="DDDD (generated)">
+        <dropNotNullConstraint columnDataType="int" columnName="item_order" tableName="users"/>
+    </changeSet>
+
+</databaseChangeLog>

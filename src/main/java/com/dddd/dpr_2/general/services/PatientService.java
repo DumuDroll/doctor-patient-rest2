@@ -2,7 +2,6 @@ package com.dddd.dpr_2.general.services;
 
 import com.dddd.dpr_2.database.models.FullInfo;
 import com.dddd.dpr_2.database.models.Patient;
-import com.dddd.dpr_2.database.models.User;
 import com.dddd.dpr_2.database.repository.PatientRepository;
 import com.dddd.dpr_2.general.config.ChainStrategyConfig;
 import com.dddd.dpr_2.general.constants.Constants;
@@ -11,7 +10,6 @@ import com.dddd.dpr_2.general.exceptions.ResourceNotFoundException;
 import com.dddd.dpr_2.general.order_strategies.OrderContext;
 import com.dddd.dpr_2.general.order_strategies.OrderContextBuilder;
 import com.dddd.dpr_2.web.dto.PatientDto;
-import com.dddd.dpr_2.web.dto.UserDto;
 import com.dddd.dpr_2.web.mappers.PatientMapper;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -34,7 +32,6 @@ import java.nio.file.StandardCopyOption;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
-import java.util.UUID;
 
 @Log4j2
 @Service
