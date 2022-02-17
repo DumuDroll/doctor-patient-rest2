@@ -66,9 +66,6 @@ public class DoctorPatientRest2Application {
 
 	public static void main(String[] args) {
 		SpringApplication.run(DoctorPatientRest2Application.class, args);
-		log.error(new Exception());
-		log.debug("debug00");
-		log.info("info00");
 	}
 
 }
